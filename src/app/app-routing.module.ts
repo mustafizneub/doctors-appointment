@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from './modules/shared/components/not-found/not-found.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+	{ path: '/', loadChildren: () => import('./modules/appointment/appointment.module').then(m => m.AppointmentModule) },
+	{ path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
 	imports: [RouterModule.forRoot(routes)],

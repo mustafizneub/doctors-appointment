@@ -9,12 +9,14 @@ import { CoreModule } from './modules/core/core.module';
 import { CommonPipe } from './modules/shared/common.pipe';
 import { CommonDirective } from './modules/shared/directives/common.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotFoundComponent } from './modules/shared/components/not-found/not-found.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		CommonPipe,
-		CommonDirective
+		CommonDirective,
+		NotFoundComponent
 	],
 	imports: [
 		BrowserModule,

@@ -8,16 +8,16 @@ import { TokenInterceptor } from './interceptors/Http.interceptor';
 import { HttpErrorInterceptor } from './interceptors/error.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CookieService } from './services/cookie.service';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatInputModule} from '@angular/material/input';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatSelectModule} from '@angular/material/select';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
 export function initConfigInfo(urlList: CommonService) {
 	return () => urlList.getConfigFile();
 }
@@ -40,7 +40,20 @@ export function initConfigInfo(urlList: CommonService) {
 		MatProgressSpinnerModule,
 		MatSelectModule
 	],
-	providers:[
+	exports: [
+		HeaderComponent,
+		MatToolbarModule,
+		MatButtonModule,
+		MatDatepickerModule,
+		MatDialogModule,
+		MatFormFieldModule,
+		MatGridListModule,
+		MatInputModule,
+		MatMenuModule,
+		MatProgressSpinnerModule,
+		MatSelectModule
+	],
+	providers: [
 		{ provide: APP_INITIALIZER, useFactory: initConfigInfo, deps: [CommonService], multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
 		{ provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
