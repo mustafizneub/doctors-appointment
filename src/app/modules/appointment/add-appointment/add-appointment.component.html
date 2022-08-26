@@ -1,1 +1,19 @@
-<p>add-appointment works!</p>
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Favorite food" value="Sushi"
+      ngModel name="favoriteFood">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <input type="number" matInput placeholder="cost" value="0"
+      ngModel name="cost">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Leave a comment" value="some comments about the food"
+      ngModel name="comments"></textarea>
+    </mat-form-field>
+  
+    <button (click)="null" mat-raised-button color="primary">Submit</button>
+    <button class="ml-5" (click)="null" mat-raised-button color="basic">Cancel</button>
+  </form>

@@ -1,9 +1,19 @@
 <p>
 	<mat-toolbar color="primary">
-	  <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+		<!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
 		<mat-icon>menu</mat-icon>
 	  </button> -->
-	  <span>My App</span>
-	  <span class="example-spacer"></span>
+		<span>Doctors Appointment</span>
+		<mat-form-field appearance="fill" style="margin-left:5px">
+			<!-- <mat-label>Favorite animal</mat-label> -->
+			<mat-select ngModel name="month" [value]=1 required (selectionChange)="changeMonth($event)">
+				<mat-option>--</mat-option>
+				<mat-option *ngFor="let item of months" [value]="item.value">
+					{{item.name}}
+				</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<span class="example-spacer"></span>
+		<button mat-raised-button color="primary" (click)="addDialog()">Create Appointment</button>
 	</mat-toolbar>
-  </p>
+</p>

@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
+import {MatCardModule} from '@angular/material/card';
 export function initConfigInfo(urlList: CommonService) {
 	return () => urlList.getConfigFile();
 }
@@ -38,7 +39,8 @@ export function initConfigInfo(urlList: CommonService) {
 		MatInputModule,
 		MatMenuModule,
 		MatProgressSpinnerModule,
-		MatSelectModule
+		MatSelectModule,
+		MatCardModule
 	],
 	exports: [
 		HeaderComponent,
@@ -51,7 +53,8 @@ export function initConfigInfo(urlList: CommonService) {
 		MatInputModule,
 		MatMenuModule,
 		MatProgressSpinnerModule,
-		MatSelectModule
+		MatSelectModule,
+		MatCardModule
 	],
 	providers: [
 		{ provide: APP_INITIALIZER, useFactory: initConfigInfo, deps: [CommonService], multi: true },
