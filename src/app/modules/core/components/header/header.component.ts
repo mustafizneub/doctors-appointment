@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddAppointmentComponent } from 'src/app/modules/appointment/add-appointment/add-appointment.component';
-import { CommonService } from '../../services/common.service';
 
 @Component({
 	selector: 'app-header',
@@ -11,6 +10,7 @@ import { CommonService } from '../../services/common.service';
 })
 export class HeaderComponent implements OnInit {
 
+	date = new Date().getMonth() + 1;
 	months = [
 		{
 			name: 'January',
@@ -60,33 +60,26 @@ export class HeaderComponent implements OnInit {
 			name: 'Decembar',
 			value: 12
 		}
-	]
+	];
 	constructor(
 		public dialog: MatDialog,
-		private service: CommonService,
-		private router:Router
+		private router: Router,
+		private route: ActivatedRoute
 	) { }
 
 	ngOnInit(): void {
-		console.log('header works');
+		this.route.paramMap.subscribe(res => {
+			if (res.get('id')) {
+				this.date =  Number(res.get('id'));
+			}
+		});
 	}
 
 	changeMonth(event: any) {
-		this.router.navigate(['month/'+event.value])
+		this.router.navigate(['month/' + event.value]);
 	}
 
 	addDialog() {
-		const dialogRef = this.dialog.open(AddAppointmentComponent, {
-			data: {
-				animal: 'panda',
-			},
-		});
-
-		dialogRef.afterClosed().subscribe(result => {
-			console.log(`Dialog result: ${result}`);
-			if (result) {
-				this.service.data.next(result);
-			}
-		});
+		const dialogRef = this.dialog.open(AddAppointmentComponent);
 	}
 }

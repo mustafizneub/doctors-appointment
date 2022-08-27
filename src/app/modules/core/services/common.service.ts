@@ -1,14 +1,14 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
 })
 
 export class CommonService {
-	
-	data =  new BehaviorSubject(null);
+	dataSource = new BehaviorSubject(null);
+	data =  this.dataSource.asObservable();
 	private configUrl: string = "/assets/config/config.json";
 	constructor(
 		private httpClient: HttpClient

@@ -1,5 +1,14 @@
+<app-header></app-header>
 <mat-grid-list cols="7" rowHeight="150px" class="border">
-	<mat-grid-tile *ngFor="let item of [].constructor(number); index as i">{{i+1}}
-		<button (click)="openDialog()">view</button>
+	<mat-grid-tile *ngFor="let item of [].constructor(number); index as i">
+		<span>{{i+1}}</span>
+		<div style="padding: 5px;">
+			<mat-selection-list [multiple]="false" class="border_box">
+				<mat-list-option *ngFor="let item of getAppointment(i); index as j" [value]="item"
+					(click)="openDialog(item)">
+					Appointment {{j+1}}
+				</mat-list-option>
+			</mat-selection-list>
+		</div>
 	</mat-grid-tile>
 </mat-grid-list>

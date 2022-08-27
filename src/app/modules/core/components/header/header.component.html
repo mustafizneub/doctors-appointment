@@ -6,7 +6,7 @@
 		<span>Doctors Appointment</span>
 		<mat-form-field appearance="fill" style="margin-left:5px">
 			<!-- <mat-label>Favorite animal</mat-label> -->
-			<mat-select ngModel name="month" [value]=1 required (selectionChange)="changeMonth($event)">
+			<mat-select [(ngModel)]="date" (selectionChange)="changeMonth($event)">
 				<mat-option>--</mat-option>
 				<mat-option *ngFor="let item of months" [value]="item.value">
 					{{item.name}}

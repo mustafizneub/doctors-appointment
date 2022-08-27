@@ -1,6 +1,5 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,9 +19,7 @@ import { NotFoundComponent } from './modules/shared/components/not-found/not-fou
 	],
 	imports: [
 		BrowserModule,
-		FormsModule,
 		HttpClientModule,
-		ReactiveFormsModule,
 		AppRoutingModule,
 		CoreModule,
 		BrowserAnimationsModule,

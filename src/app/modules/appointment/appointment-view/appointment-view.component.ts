@@ -9,16 +9,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class AppointmentViewComponent implements OnInit {
 
 	constructor(
-		@Inject(MAT_DIALOG_DATA) public data:any,
+		@Inject(MAT_DIALOG_DATA) public data: any,
 		public dialogRef: MatDialogRef<AppointmentViewComponent>
 	) { }
 
 	ngOnInit(): void {
-		console.log('');
 	}
 
-	close(){
+	close() {
 		this.dialogRef.close();
 	}
-
 }

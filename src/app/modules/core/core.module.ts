@@ -19,6 +19,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatListModule} from '@angular/material/list';
 export function initConfigInfo(urlList: CommonService) {
 	return () => urlList.getConfigFile();
 }
@@ -40,7 +44,12 @@ export function initConfigInfo(urlList: CommonService) {
 		MatMenuModule,
 		MatProgressSpinnerModule,
 		MatSelectModule,
-		MatCardModule
+		MatCardModule,
+		NgxMaterialTimepickerModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatNativeDateModule,
+		MatListModule
 	],
 	exports: [
 		HeaderComponent,
@@ -54,7 +63,12 @@ export function initConfigInfo(urlList: CommonService) {
 		MatMenuModule,
 		MatProgressSpinnerModule,
 		MatSelectModule,
-		MatCardModule
+		MatCardModule,
+		NgxMaterialTimepickerModule,
+		FormsModule,
+		ReactiveFormsModule,
+		MatNativeDateModule,
+		MatListModule
 	],
 	providers: [
 		{ provide: APP_INITIALIZER, useFactory: initConfigInfo, deps: [CommonService], multi: true },
@@ -62,7 +76,8 @@ export function initConfigInfo(urlList: CommonService) {
 		{ provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
 		CommonService,
 		CacheService,
-		CookieService
+		CookieService,
+		MatDatepickerModule
 	]
 })
 export class CoreModule { }

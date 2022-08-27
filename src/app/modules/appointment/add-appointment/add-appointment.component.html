@@ -1,19 +1,74 @@
-<form class="example-form">
-    <mat-form-field class="example-full-width">
-      <input matInput placeholder="Favorite food" value="Sushi"
-      ngModel name="favoriteFood">
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width">
-      <input type="number" matInput placeholder="cost" value="0"
-      ngModel name="cost">
-    </mat-form-field>
-  
-    <mat-form-field class="example-full-width">
-      <textarea matInput placeholder="Leave a comment" value="some comments about the food"
-      ngModel name="comments"></textarea>
-    </mat-form-field>
-  
-    <button (click)="null" mat-raised-button color="primary">Submit</button>
-    <button class="ml-5" (click)="null" mat-raised-button color="basic">Cancel</button>
-  </form>
+<form class="example-form" [formGroup]="appointmentForm" (ngSubmit)="submit()">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="First Name" formControlName="firstname">
+    <mat-error *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)" class="alert">
+      <mat-error *ngIf="firstname.errors?.['required']">
+        Firstname is required.
+      </mat-error>
+      <mat-error *ngIf="firstname.errors?.['maxlength']">
+        Firstname must be less than 40 characters.
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Last Name" formControlName="lastname">
+    <mat-error *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)" class="alert">
+      <mat-error *ngIf="lastname.errors?.['required']">
+        Lastname is required.
+      </mat-error>
+      <mat-error *ngIf="lastname.errors?.['maxlength']">
+        Lastname must be less than 40 characters.
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" type="email" formControlName="email">
+    <mat-error *ngIf="email.invalid && (email.dirty || email.touched)" class="alert">
+      <mat-error *ngIf="email.errors?.['required']">
+        Email is required.
+      </mat-error>
+      <mat-error *ngIf="email.errors?.['pattern']">
+        Please enter a valid email
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Select gender" formControlName="gender">
+      <mat-option *ngFor="let item of ['male','female','others']" [value]="item">
+        {{item | titlecase}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Age" type="number" formControlName="age">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="example-full-width">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="datepicker" [min]="minDate" formControlName="date" readonly>
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+    <mat-error *ngIf="date.invalid && (date.dirty || date.touched)" class="alert">
+      <mat-error *ngIf="date.errors?.['required']">
+        Date is required.
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput [ngxTimepicker]="picker" [min]="minTime" placeholder="HH:mm" formControlName="time" readonly>
+    <ngx-material-timepicker #picker></ngx-material-timepicker>
+    <mat-error *ngIf="time.invalid && (time.dirty || time.touched)" class="alert">
+      <mat-error *ngIf="time.errors?.['required']">
+        Time is required.
+      </mat-error>
+    </mat-error>
+  </mat-form-field>
+
+  <button type="submit" mat-raised-button color="primary" >Submit</button>
+  <button class="ml-5" type="button" [matDialogClose] mat-raised-button color="basic">Cancel</button>
+</form>
